@@ -14,4 +14,22 @@ class ApplicationController < ActionController::Base
   def whitelist
     %w{store products}.include?(controller_name)
   end
+
+# カートの識別・なければ渡す
+  def current_cart
+    # メソッド内からセッション毎に一つだけidを探してくる
+    # sessionはsession別に判別するメソッド
+    Cart.find(session[:cart_id])
+    # しかし初セッションのユーザーはカート情報を持ってないので
+    # 初セッションユーザーは例外としてカートを作成する
+
+    # 以下より例外処理
+  rescue ActiveRecord::RecordNotFound
+    cart = Cart.create
+    # 以下を書くことでユーザーのセッションを残す
+    session[:csrt_id] = cart.id
+    cart
+  end
+
+
 end
