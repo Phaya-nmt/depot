@@ -3,4 +3,7 @@ class LineItem < ActiveRecord::Base
   # LineItemからproductとcartに関連がある証明的な？
   belongs_to :product
   belongs_to :cart
+  def total_price
+    product.price * quantity
+  end
 end
