@@ -19,8 +19,12 @@
       <li><a href="#">よくある質問</a></li>
       <li><a href="#">ニュース</a></li>
       <li><a href="#">お問い合わせ</a></li>
-    </ul>
-    <h4 id="time_style"><%= @time %></h4>
+      <li><a><%= @time %></a></li>
+      <% if @cart %>
+      <li><%= link_to('カート', cart_path(@cart || 0)) %></li>
+      <% end %>
+    </ul><!-- 
+    <h4 id="time_style"><%= @time %></h4> -->
   </div>
 
   <div id="main">

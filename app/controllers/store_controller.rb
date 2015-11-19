@@ -18,7 +18,8 @@ puts "----------------------"
       else
       session[:counter] += 1
     end
-      session[:counter] = @counter
+      @counter = session[:counter]
+      @cart = current_cart
   end
 
 # if session != nil
