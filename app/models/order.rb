@@ -3,7 +3,7 @@ class Order < ActiveRecord::Base
 
   PAYMENT_TYPES = ["現金", "クレジットカード", "注文書"]
 
-  validates :name, :address, :email, presence: true
+  validates :name, :adress, :email, presence: true
   validates :pay_type, inclusion: PAYMENT_TYPES
 
   def add_line_items_from_cart(cart)

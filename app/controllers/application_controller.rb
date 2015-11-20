@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   rescue ActiveRecord::RecordNotFound
     cart = Cart.create
     # 以下を書くことでユーザーのセッションを残す
-    session[:csrt_id] = cart.id
+    session[:cart_id] = cart.id
     cart
   end
 

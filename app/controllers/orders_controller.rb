@@ -20,10 +20,10 @@ class OrdersController < ApplicationController
     return
     end
     @order = Order.new
-    respond_to do |format|
-      format.html # new.html.erb
-      farmat.json { render json: @order }
-    end
+    # respond_to do |format|
+    #   format.html # new.html.erb
+    #   farmat.json { render json: @order }
+    # end
   end
 
   # GET /orders/1/edit
@@ -40,9 +40,12 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+        OrderNotifier.received(@order).deliver_now
+
         format.html { redirect_to store_url,notice:"ご注文ありがとうございます"}
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
+        format.json { render json: @order, status: :created, location: @order }
+        # format.json { render :show, status: :created, location: @order }
       else
         @cart = current_cart
         format.html { render :new }

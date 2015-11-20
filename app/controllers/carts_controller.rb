@@ -75,10 +75,10 @@ class CartsController < ApplicationController
       logger.error "無効なカート#{params[:id]}にアクセスしようとしました"
       redirect_to store_url, notice: "無効なカートです"
     else
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @cart }
-      end
+      # respond_to do |format|
+      #   format.html # show.html.erb
+      #   format.json { render json: @cart }
+      # end
     end
     end
 
