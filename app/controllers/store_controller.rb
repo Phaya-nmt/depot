@@ -6,7 +6,13 @@ class StoreController < ApplicationController
 
 
   def index
-    @products = Product.order(:title)
+    if params[:set_locale]
+      redirect_to store_path(locale: params[:set_locale])
+    else
+      @products = Product.order(:title)
+      @cart = current_cart
+    end
+    # @products = Product.order(:title)
 
 
 

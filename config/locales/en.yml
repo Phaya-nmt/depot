@@ -20,6 +20,20 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+
+  activerecord:
+      errors:
+        messages:
+        inclusion:        "no est&aacute; incluido en la lista"
+        blank:            "no puede quedar en blanco"
+  errors:
+    template:
+      body:             "Hay problems con los siguientes campos"
+      header:
+      header:
+        one:            "1 error ha impedido que siguientes campos:"
+        other:          "%{count} errores han impedido que este %{model} se guarde"
+
   layouts:
     application:
       title:      "Pragmatic Bookshelf"
