@@ -10,21 +10,29 @@
 <body class="<%= controller.controller_name %>">
 <div id="banner">
 <% image_tag("logo.png") %>
-<% @page_title || "Pragmatic Bookshelf" %>
+<% @page_title || t('.title') %>
 </div>
 <div id="columns">
   <div id="side">
     <ul>
-      <li><a href="#">ホーム</a></li>
-      <li><a href="#">よくある質問</a></li>
-      <li><a href="#">ニュース</a></li>
-      <li><a href="#">お問い合わせ</a></li>
+      <li><a href="#"><%= t('.home') %></a></li>
+      <li><a href="#"><%= t('.question') %></a></li>
+      <li><a href="#"><%= t('.news') %></a></li>
+      <li><a href="#"><%= t('.contact') %></a></li>
       <li><a><%= @time %></a></li>
       <% if @cart %>
       <li><%= link_to('カート', cart_path(@cart || 0)) %></li>
       <% end %>
     </ul><!-- 
     <h4 id="time_style"><%= @time %></h4> -->
+    <% if session[:user_id] %>
+    <ul>
+      <li><%= link_to '注文', orders_path %></li>
+      <li><%= link_to '商品', products_path %></li>
+      <li><%= link_to 'ユーザー', users_path %></li>
+    </ul>
+    <%= button_to 'ログアウト', logout_path, method: :delete %>
+    <% end %>
   </div>
 
   <div id="main">

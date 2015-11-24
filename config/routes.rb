@@ -1,17 +1,30 @@
 Rails.application.routes.draw do
+  get 'admin' => 'admin#index'
+
+  controller :sessions do
+    # sessions/new となっていたURLを login に変更
+    get  'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
+scope '(:locale)' do
+  resources :users
   resources :orders
   resources :line_items
   resources :carts
+  resources :products
+  root to: 'store#index', as: 'store'
   get 'store/index'
+end
   # get 'hogehoge/fugafuga' => 'store#index'
 
-  resources :products
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-root to: 'store#index', as: 'store'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

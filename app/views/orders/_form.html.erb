@@ -11,12 +11,13 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :adress %><br>
+    <%= f.label :adress, t('.adress.html') %><br>
     <%= f.text_area :adress %>
   </div>
   <div class="field">
@@ -25,9 +26,10 @@
   </div>
   <div class="field">
     <%= f.label :pay_type %><br>
-    <%= f.text_field :pay_type %>
+    <%= f.text_field :pay_type
+                     :prompt: t('.pay_prompt_html') %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('.submit') %>
   </div>
 <% end %>

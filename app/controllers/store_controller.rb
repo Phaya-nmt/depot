@@ -1,5 +1,5 @@
 class StoreController < ApplicationController
-  before_action :now
+  skip_before_action :authorize
 
 # if session[:counter].nil
 # end
