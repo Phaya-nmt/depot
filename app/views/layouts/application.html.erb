@@ -23,6 +23,9 @@ onchange: 'this.form.submit()' %>
 </div>
 <div id="columns">
   <div id="side">
+  <div>
+    <%= render @cart %>
+  </div>
     <ul>
       <li><a href="#"><%= t('.home') %></a></li>
       <li><a href="#"><%= t('.question') %></a></li>
