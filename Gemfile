@@ -56,3 +56,6 @@ group :production do
   gem 'rails_12factor'
 end
 gem 'will_paginate'
+gem 'annotate'
+gem 'thin'
+gem 'rails-erd'
